@@ -1,10 +1,15 @@
 import * as React from 'react';
-import { initStore } from '../store';
 import * as withRedux from 'next-redux-wrapper';
+import { initStore } from '../store';
+import Layout from '../components/Layout';
 
 export class Index extends React.Component {
   render() {
-    return <div>Hello</div>;
+    return (
+      <Layout>
+        <div />
+      </Layout>
+    );
   }
 }
 
