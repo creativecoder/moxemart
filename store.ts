@@ -1,12 +1,15 @@
 import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import products from './products';
 
+// DEFAULT STATE
 interface Product {
   id: string;
   name: string;
   imageUrl: string;
   price: number;
   isTaxed: boolean;
+  isImported: boolean;
 }
 
 interface CartItem {
@@ -20,7 +23,7 @@ interface State {
 }
 
 export const defaultState: State = {
-  products: {},
+  products,
   cart: {},
 };
 

@@ -2,11 +2,11 @@ import {} from 'jest';
 import { defaultState, actionTypes, reducer, initStore } from './store';
 
 describe('defaultState', () => {
-  it('has products object', () => {
+  it('has products', () => {
     expect(defaultState).toHaveProperty('products');
   });
 
-  it('has cart object', () => {
+  it('has cart', () => {
     expect(defaultState).toHaveProperty('cart');
   });
 });
