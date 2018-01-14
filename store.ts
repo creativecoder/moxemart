@@ -3,7 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import products from './products';
 
 // DEFAULT STATE
-export interface Product {
+export interface ProductDataInterface {
   id: string;
   name: string;
   imageUrl: string;
@@ -12,38 +12,41 @@ export interface Product {
   isImported: boolean;
 }
 
-interface CartItem {
+export interface CartItemInterface {
   productId: string;
   quantity: number;
 }
 
-interface State {
-  products: { [index: string]: Product };
-  cart: { [index: string]: CartItem };
+interface StateInterface {
+  products: { [index: string]: ProductDataInterface };
+  cart: { [index: string]: CartItemInterface };
 }
 
-export const defaultState: State = {
+export const defaultState: StateInterface = {
   products,
   cart: {},
 };
 
-interface ActionTypes {}
+interface ActionTypesInterface {}
 
-export const actionTypes: ActionTypes = {};
+export const actionTypes: ActionTypesInterface = {};
 
-interface Action {
+interface ActionInterface {
   type: string;
   payload?: any;
 }
 
 // REDUCERS
-export const reducer = (state: State = defaultState, action: Action): State => {
+export const reducer = (
+  state: StateInterface = defaultState,
+  action: ActionInterface,
+): StateInterface => {
   switch (action.type) {
     default:
       return state;
   }
 };
 
-export const initStore = (initialState: State = defaultState) => {
+export const initStore = (initialState: StateInterface = defaultState) => {
   return createStore(reducer, initialState, composeWithDevTools());
 };
