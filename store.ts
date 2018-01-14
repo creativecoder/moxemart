@@ -3,7 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import products from './products';
 
 // DEFAULT STATE
-interface Product {
+export interface Product {
   id: string;
   name: string;
   imageUrl: string;
@@ -18,8 +18,8 @@ interface CartItem {
 }
 
 interface State {
-  products: { [propName: string]: Product };
-  cart: { [propName: string]: CartItem };
+  products: { [index: string]: Product };
+  cart: { [index: string]: CartItem };
 }
 
 export const defaultState: State = {

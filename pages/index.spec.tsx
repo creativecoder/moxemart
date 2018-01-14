@@ -12,8 +12,8 @@ describe('Index page', () => {
 });
 
 describe('Index page with store', () => {
-  it('has initial store', () => {
-    const initialStore = IndexWithStore().props.store;
-    expect(initialStore).toHaveProperty('getState');
+  it('has initial store', async () => {
+    const index = await IndexWithStore.getInitialProps({});
+    expect(index).toHaveProperty('store');
   });
 });
