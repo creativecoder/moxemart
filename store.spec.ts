@@ -5,6 +5,7 @@ import {
   reducer,
   initStore,
   addToCart,
+  removeFromCart,
   ActionInterface,
 } from './store';
 
@@ -12,6 +13,11 @@ const productId: string = '1';
 
 const addToCartAction: ActionInterface = {
   type: actionTypes.ADD_TO_CART,
+  payload: productId,
+};
+
+const removeFromCartAction: ActionInterface = {
+  type: actionTypes.REMOVE_FROM_CART,
   payload: productId,
 };
 
@@ -48,12 +54,25 @@ describe('reducer', () => {
       productId,
       quantity: 2,
     };
-    expect(state.cart[productId]).toEqual(cartProduct);
+    expect(state2.cart[productId]).toEqual(cartProduct);
+  });
+
+  it('removes a product from the cart', () => {
+    const stateWithProductInCart = reducer(undefined, addToCartAction);
+    const stateWithoutProductInCart = reducer(
+      stateWithProductInCart,
+      removeFromCartAction,
+    );
+    expect(stateWithoutProductInCart.cart[productId]).toBe(undefined);
   });
 });
 
 describe('actions', () => {
   it('creates action to add a product to the cart', () => {
     expect(addToCart(productId)).toEqual(addToCartAction);
+  });
+
+  it('creates and action to remove a product from the cart', () => {
+    expect(removeFromCart(productId)).toEqual(removeFromCartAction);
   });
 });

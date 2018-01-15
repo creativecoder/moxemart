@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { ProductDataInterface, addToCart } from '../store';
+import { ProductDataInterface, addToCart, StateInterface } from '../store';
 import Price from './Price';
 
 export const ProductItem = ({
@@ -21,7 +21,10 @@ export const ProductItem = ({
   </div>
 );
 
-const mapStateToProps = (state: any, ownProps: any) => {
+const mapStateToProps = (
+  state: StateInterface,
+  ownProps: { product: ProductDataInterface },
+) => {
   return {
     product: ownProps.product,
   };

@@ -1,15 +1,19 @@
 import {} from 'jest';
 import { shallow } from 'enzyme';
-import CartItem, { CartItemInterface } from './CartItem';
+import { CartItem, CartItemInterface } from './CartItem';
 import Price from './Price';
 import Product from '../helpers/Product';
 import { fakeProductData, fakeCartProduct } from '../fakeData';
+
+const mockRemoveFromCart = jest.fn();
 
 describe('CartItem component', () => {
   let cartItem;
 
   beforeAll(() => {
-    cartItem = shallow(<CartItem item={fakeCartProduct} />);
+    cartItem = shallow(
+      <CartItem item={fakeCartProduct} removeFromCart={mockRemoveFromCart} />,
+    );
   });
 
   it('displays the name of a product', () => {
@@ -33,5 +37,14 @@ describe('CartItem component', () => {
         .first()
         .html(),
     ).toContain(subtotal.toFixed(2));
+  });
+
+  it('calls an removeFromCart action when button is clicked', () => {
+    cartItem
+      .find('#remove-from-cart')
+      .first()
+      .simulate('click');
+    expect(mockRemoveFromCart).toHaveBeenCalledTimes(1);
+    expect(mockRemoveFromCart).toHaveBeenCalledWith(fakeCartProduct.product.id);
   });
 });

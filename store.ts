@@ -17,7 +17,7 @@ export interface CartDataInterface {
   quantity: number;
 }
 
-interface StateInterface {
+export interface StateInterface {
   products: { [index: string]: ProductDataInterface };
   cart: { [index: string]: CartDataInterface };
 }
@@ -47,7 +47,7 @@ export const reducer = (
   action: ActionInterface,
 ): StateInterface => {
   switch (action.type) {
-    case actionTypes.ADD_TO_CART:
+    case actionTypes.ADD_TO_CART: {
       const productId = action.payload;
       const cart = Object.assign({}, state.cart);
       if (state.cart.hasOwnProperty(productId)) {
@@ -59,8 +59,16 @@ export const reducer = (
         cart[productId] = { productId, quantity: 1 };
       }
       return Object.assign({}, state, { cart });
-    default:
+    }
+    case actionTypes.REMOVE_FROM_CART: {
+      const productId = action.payload;
+      const cart = Object.assign({}, state.cart);
+      delete cart[productId];
+      return Object.assign({}, state, { cart });
+    }
+    default: {
       return state;
+    }
   }
 };
 
@@ -68,6 +76,13 @@ export const reducer = (
 export const addToCart = (productId: string): ActionInterface => {
   return {
     type: actionTypes.ADD_TO_CART,
+    payload: productId,
+  };
+};
+
+export const removeFromCart = (productId: string): ActionInterface => {
+  return {
+    type: actionTypes.REMOVE_FROM_CART,
     payload: productId,
   };
 };
