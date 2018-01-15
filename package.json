@@ -1,4 +1,5 @@
 {
+  "private": true,
   "name": "moxemart",
   "version": "1.0.0",
   "description": "Example shopping cart application using Next.js and Redux",
@@ -47,16 +48,8 @@
       "^.+\\.tsx?$": "ts-jest"
     },
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json"
-    ],
-    "setupFiles": [
-      "./jest.setup.ts"
-    ],
+    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json"],
+    "setupFiles": ["./jest.setup.ts"],
     "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
     "globals": {
       "ts-jest": {
