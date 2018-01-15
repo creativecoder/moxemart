@@ -1,13 +1,17 @@
 import { ReactNode } from 'react';
+import { connect } from 'react-redux';
 import Link from 'next/link';
 import Head from 'next/head';
+import { StateInterface } from '../store';
 
-export default ({
+export const Layout = ({
   children,
   title = 'MoxeMart',
+  cartQuantity = 0,
 }: {
   children: ReactNode;
   title?: string;
+  cartQuantity?: number;
 }) => (
   <div>
     <Head>
@@ -28,7 +32,10 @@ export default ({
           </li>
           <li>
             <Link href="/cart">
-              <a>Cart</a>
+              <a>
+                Cart
+                <span>{cartQuantity > 0 ? ` ( ${cartQuantity} )` : ''}</span>
+              </a>
             </Link>
           </li>
         </ul>
@@ -45,3 +52,22 @@ export default ({
     </footer>
   </div>
 );
+
+const mapStateToProps = (
+  state: StateInterface,
+  ownProps: {
+    children: ReactNode;
+    title: string;
+  },
+) => {
+  return {
+    children: ownProps.children,
+    title: ownProps.title,
+    cartQuantity: Object.values(state.cart).reduce(
+      (total, item) => total + item.quantity,
+      0,
+    ),
+  };
+};
+
+export default connect(mapStateToProps)(Layout);

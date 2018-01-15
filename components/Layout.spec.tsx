@@ -1,7 +1,7 @@
 import {} from 'jest';
 import { shallow } from 'enzyme';
 import Link from 'next/link';
-import Layout from './Layout';
+import { Layout } from './Layout';
 
 describe('Layout component', () => {
   const Child = () => <div />;
