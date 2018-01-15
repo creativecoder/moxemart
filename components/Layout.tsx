@@ -4,7 +4,7 @@ import Head from 'next/head';
 
 export default ({
   children,
-  title = 'moxemart',
+  title = 'MoxeMart',
 }: {
   children: ReactNode;
   title?: string;
@@ -20,11 +20,20 @@ export default ({
     </Head>
     <header>
       <nav>
-        <Link href="/">
-          <a>Products</a>
-        </Link>
+        <ul>
+          <li>
+            <Link href="/">
+              <a>Products</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/cart">
+              <a>Cart</a>
+            </Link>
+          </li>
+        </ul>
       </nav>
-      <h1>moxemart</h1>
+      <h1>MoxeMart</h1>
     </header>
 
     {children}

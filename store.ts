@@ -12,14 +12,14 @@ export interface ProductDataInterface {
   isImported: boolean;
 }
 
-export interface CartItemInterface {
+export interface CartDataInterface {
   productId: string;
   quantity: number;
 }
 
 interface StateInterface {
   products: { [index: string]: ProductDataInterface };
-  cart: { [index: string]: CartItemInterface };
+  cart: { [index: string]: CartDataInterface };
 }
 
 export const defaultState: StateInterface = {

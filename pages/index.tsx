@@ -1,11 +1,10 @@
-import * as React from 'react';
 import * as withRedux from 'next-redux-wrapper';
 import { initStore, ProductDataInterface } from '../store';
 import Layout from '../components/Layout';
 import ProductList from '../components/ProductList';
 import Product, { ProductInterface } from '../helpers/Product';
 
-export const Index = ({
+export const IndexPage = ({
   productData,
 }: {
   [index: string]: ProductDataInterface;
@@ -15,7 +14,7 @@ export const Index = ({
       new Product(productDatum),
   );
   return (
-    <Layout>
+    <Layout title="MoxeMart | Products">
       <h2>Products</h2>
       <ProductList products={products} />
     </Layout>
@@ -23,5 +22,5 @@ export const Index = ({
 };
 
 export default withRedux(initStore, state => ({ productData: state.products }))(
-  Index,
+  IndexPage,
 );
