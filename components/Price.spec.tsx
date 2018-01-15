@@ -22,8 +22,14 @@ describe('Price component', () => {
   });
 
   it('adds a decimal point if the price does not have one', () => {
-    const cost = 4325;
+    const cost = 325;
     const price = shallow(<Price price={cost} />);
     expect(price.text()).toBe(`$${cost}.00`);
+  });
+
+  it('adds commas for large numbers', () => {
+    const cost = 4789.98;
+    const price = shallow(<Price price={cost} />);
+    expect(price.text()).toBe('$4,789.98');
   });
 });

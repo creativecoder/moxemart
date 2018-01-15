@@ -8,10 +8,11 @@ export interface CartItemInterface {
 
 export default ({ item }: { item: CartItemInterface }) => (
   <div>
-    <div className="cart__quantity">{item.quantity}</div>
-    <div>{item.product.name}</div>
-    <div className="cart__subtotal">
-      <Price price={item.product.total()} />
+    <div>
+      <span className="cart__quantity">{item.quantity}</span>
+      &nbsp;{item.product.name}:&nbsp;<Price
+        price={item.product.total() * item.quantity}
+      />
     </div>
   </div>
 );
