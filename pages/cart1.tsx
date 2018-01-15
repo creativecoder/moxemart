@@ -20,14 +20,27 @@ export const CartPage = ({
     };
   });
   return (
-    <Layout title="MoxeMart | Cart">
-      <h2>Cart</h2>
-      <Cart items={items} showRemoveLink={true} />
+    <Layout title="MoxeMart | Cart 1">
+      <h2>Cart 1</h2>
+      <Cart items={items} />
     </Layout>
   );
 };
 
 export default withRedux(initStore, state => ({
   productData: state.products,
-  cartData: state.cart,
+  cartData: {
+    '1': {
+      productId: '1',
+      quantity: 1,
+    },
+    '2': {
+      productId: '2',
+      quantity: 1,
+    },
+    '3': {
+      productId: '3',
+      quantity: 1,
+    },
+  },
 }))(CartPage);

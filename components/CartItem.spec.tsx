@@ -12,7 +12,11 @@ describe('CartItem component', () => {
 
   beforeAll(() => {
     cartItem = shallow(
-      <CartItem item={fakeCartProduct} removeFromCart={mockRemoveFromCart} />,
+      <CartItem
+        item={fakeCartProduct}
+        removeFromCart={mockRemoveFromCart}
+        showRemoveLink={true}
+      />,
     );
   });
 

@@ -30,12 +30,31 @@ export const Layout = ({
               <a>Products</a>
             </Link>
           </li>
+
           <li>
             <Link href="/cart">
               <a>
                 Cart
                 <span>{cartQuantity > 0 ? ` ( ${cartQuantity} )` : ''}</span>
               </a>
+            </Link>
+          </li>
+
+          <li>
+            <Link href="/cart1">
+              <a>Cart 1</a>
+            </Link>
+          </li>
+
+          <li>
+            <Link href="/cart2">
+              <a>Cart 2</a>
+            </Link>
+          </li>
+
+          <li>
+            <Link href="/cart3">
+              <a>Cart 3</a>
             </Link>
           </li>
         </ul>

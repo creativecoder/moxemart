@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import Router from 'next/router';
 import { removeFromCart, StateInterface } from '../store';
 import { ProductInterface } from '../helpers/Product';
 import Price from './Price';
@@ -11,34 +12,43 @@ export interface CartItemInterface {
 export const CartItem = ({
   item,
   removeFromCart,
+  showRemoveLink = false,
 }: {
   item: CartItemInterface;
   removeFromCart: Function;
+  showRemoveLink?: boolean;
 }) => (
   <div>
     <span className="cart__quantity">{item.quantity}</span>
     &nbsp;{item.product.name}:&nbsp;<Price
       price={item.product.total() * item.quantity}
     />
-    <a
-      id="remove-from-cart"
-      href="#"
-      onClick={event => {
-        event.preventDefault();
-        removeFromCart(item.product.id);
-      }}
-    >
-      Remove from cart
-    </a>
+    {showRemoveLink ? (
+      <div>
+        <a
+          id="remove-from-cart"
+          href="#"
+          onClick={event => {
+            if (event) event.preventDefault();
+            removeFromCart(item.product.id);
+          }}
+        >
+          Remove from cart
+        </a>
+      </div>
+    ) : (
+      ''
+    )}
   </div>
 );
 
 const mapStateToProps = (
   state: StateInterface,
-  ownProps: { item: CartItemInterface },
+  ownProps: { item: CartItemInterface; showRemoveLink?: boolean },
 ) => {
   return {
     item: ownProps.item,
+    showRemoveLink: ownProps.showRemoveLink || false,
   };
 };
 
