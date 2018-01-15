@@ -7,7 +7,7 @@ import Product, { ProductInterface } from '../helpers/Product';
 export const IndexPage = ({
   productData,
 }: {
-  [index: string]: ProductDataInterface;
+  productData: { [index: string]: ProductDataInterface };
 }) => {
   const products = Object.values(productData).map(
     (productDatum: ProductDataInterface): ProductInterface =>
