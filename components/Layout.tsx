@@ -22,6 +22,32 @@ export const Layout = ({
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
     </Head>
+    <style jsx>{`
+      nav li {
+        display: inline-block;
+        margin-right: 0.75rem;
+        padding-right: 0.75rem;
+        border-right: 1px solid grey;
+      }
+
+      nav li:last-of-type {
+        border-right: none;
+      }
+
+      footer {
+        margin-top: 1.5rem;
+      }
+    `}</style>
+
+    <style global jsx>{`
+      ul {
+        padding: 0;
+      }
+      li {
+        list-style: none;
+      }
+    `}</style>
+
     <header>
       <nav>
         <ul>

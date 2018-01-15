@@ -15,6 +15,11 @@ export default ({
   const total = items.reduce((total, item) => total + item.product.total(), 0);
   return (
     <div>
+      <style jsx>{`
+        li {
+          margin-bottom: 0.5rem;
+        }
+      `}</style>
       <ul>
         {items.map((item: CartItemInterface) => (
           <li key={item.product.id}>
